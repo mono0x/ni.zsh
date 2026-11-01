@@ -3,6 +3,12 @@ on: [ push, pull_request ]
 permissions:
   contents: read
 jobs:
+  arguments:
+    name: Test argument forwarding
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: zsh -f test/arguments.zsh
   test:
     name: Test ${{ matrix.package-manager }} on macos-latest
     strategy:
